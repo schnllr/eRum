@@ -227,7 +227,7 @@ ggplot(mpg, aes(class))+
   theme(plot.margin = unit(c(0, 0, 0, 0), "mm"))
 
 ```
-.center[<IMG SRC="libs/map.png" height = "350" width = auto>]
+.center[<IMG SRC="libs/map2.PNG" height = "350" width = auto>]
 <!-- ### Excel Formatting  -->
 <!-- .center[<IMG SRC="libs/statxlsx.png" width = "300" height = auto>] -->
 ]
@@ -243,7 +243,7 @@ ggplot(mpg, aes(class))+
   scale_fill_manual(values = zhpal$zhpaired)+
   labs(title = " color palette & ggplot theme", fontfamily = "Arial Black")
 ```
-.center[<IMG SRC="libs/report_cover.png" height = "350" width = auto>]
+.center[<IMG SRC="libs/report_cover2.PNG" height = "350" width = auto>]
 ]
 
 
