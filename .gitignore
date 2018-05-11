@@ -2,3 +2,14 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rproj
+
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+index.utf8.md
+index.knit.md
+
+/*_cache/
+/cache/

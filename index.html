@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>  Analytical Pipelines-  Tools and Culture</title>
+    <title>  Analytical Pipelines -  Tools and Culture</title>
     <meta charset="utf-8">
-    <meta name="author" content="Andrea Schnell  Statistical Office Canton of Zurich" />
+    <meta name="author" content="Andrea Schnell  eRum 2018" />
     <link href="libs/font-awesome-5.0.11/css/fontawesome-all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="libs\testzh.css" type="text/css" />
   </head>
@@ -11,9 +11,8 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# <br> Analytical Pipelines- <br>Tools and Culture
-## eRum 2018
-### Andrea Schnell <br>Statistical Office Canton of Zurich
+# <br> Analytical Pipelines - <br>Tools and Culture
+### Andrea Schnell <br>eRum 2018
 
 ---
 
@@ -29,7 +28,7 @@ class: center, middle, inverse, title-slide
 
 class:  left, top
 # Environment
-<i class="fas  fa-building fa-3x fa-pull-right "></i>
+&lt;!-- <i class="fas  fa-building fa-3x fa-pull-right "></i> --&gt;
 
 
 
@@ -40,31 +39,73 @@ ls()
 ```
 
 
-```
-## [1] it     office staff
-```
+
+&lt;br&gt;
 
 ## Office
 
 ```
-## [1] Statistical Office    Official Statistics   Public Administration
+## [1] Official Statistics   Public Administration
 ```
 
 ## IT
 
 ```
-## [1] closed up IT infrastructure no admin rights            
-## [3] very rigid firewall
+## [1] closed up IT infrastructure very rigid firewall
 ```
 
 
 ## Users
 
 ```
-## [1] social scientists       Excel natives           R training «on-the-job»
+## [1] Excel natives           R training «on-the-job»
 ```
 
 
+
+---
+
+
+class: top, left
+
+# Workflow
+&lt;!-- <i class="fas  fa-cogs fa-3x fa-pull-right "></i> --&gt;
+
+
+
+
+&lt;!-- &lt;IMG SRC="libs/ausgangslage.png" width = auto height = auto&gt; --&gt;
+
+
+&lt;!-- &lt;br&gt; --&gt;
+
+&lt;!-- &lt;IMG SRC="libs/ziel.png" width = auto height = auto&gt; --&gt;
+
+&lt;!-- &lt;br&gt; --&gt;
+&lt;!-- .right[[Source: https://dataingovernment.blog.gov.uk](https://dataingovernment.blog.gov.uk/2017/03/27/reproducible-analytical-pipeline/)] --&gt;
+
+
+.pull-left[
+### Today
+- Data store  
+<i class="fas  fa-table fa-2x "></i> <i class="fas  fa-file-excel fa-2x "></i> <i class="fas  fa-database fa-2x "></i>
+
+- Statistical Analysis  
+<i class="fas  fa-file-excel fa-2x "></i>  <i class="fab  fa-r fa-2x "></i> 
+
+- Visualizations  
+<i class="fas  fa-chart-bar fa-2x "></i> <i class="fas  fa-chart-pie fa-2x "></i> <i class="fas  fa-chart-line fa-2x "></i>
+
+- Text  
+<i class="fas  fa-file-word fa-2x "></i>  
+
+- Publication  
+<i class="fas  fa-file-pdf fa-2x "></i>
+]
+
+.pull-right[
+### Tomorrow: Pipeline
+&lt;IMG SRC=libs/rmarkdown_wf.PNG width = "150" height = auto&gt;]
 
 ---
 
@@ -76,7 +117,7 @@ class:  left, top
 
 &lt;br&gt;
 
-&lt;font size = "20"&gt; &lt;b&gt; GOV.UK Data in Government &lt;/b&gt;&lt;/font&gt; 
+### GOV.UK Data in Government
 
 [**Transforming the process of producing official statistics**](https://dataingovernment.blog.gov.uk/2017/11/27/transforming-the-process-of-producing-official-statistics/)
 
@@ -94,19 +135,6 @@ class:  left, top
 
 class: top, left
 
-# Where did we start?
-<i class="fas  fa-cogs fa-3x fa-pull-right "></i>
-
-
-### Workflow
-
-&lt;IMG SRC="libs/ausgangslage.png" width = auto height = auto&gt;
-
-.right[[**UK.GOV RAP**](https://dataingovernment.blog.gov.uk/2017/03/27/reproducible-analytical-pipeline/)]
-
----
-class: top, left
-
 # How to get there?
 <i class="fas  fa-location-arrow fa-3x fa-pull-right "></i>
 
@@ -122,100 +150,165 @@ class: top, left
 <i class="fas  fa-people-carry fa-5x "></i>
 
 
+
+
+
 ---
-
-
-
 
 class: top, left
 
 # Tools
-<i class="fas  fa-wrench fa-3x fa-pull-right "></i>
+<i class="fas  fa-database fa-3x fa-pull-right "></i>
+## Data storage
+
+&lt;br&gt;
+### Data base
+
+```r
+library(ROracle)
+dbReadTable()
+dbWriteTable()
+```
+
+
+
+.pull-left[
+<i class="fas  fa-plus fa-3x fa-pull-left "></i>
+- traceable
+- secure
+- less redundancy
+]
+
+.pull-right[
+<i class="fas  fa-minus fa-3x fa-pull-left "></i>
+- how to
+- error handling (encoding, time zone)
+]
+
+---
+
+class: top, left
+
+# Tools
 ## Corporate Design Toolbox
 
-- color palettes
-- ggplot themes
-- export formatted excel tables (with openxlsx)
-- layouted pdf reports (via Rmarkdown &amp; LaTeX)
-  
+```r
+library(statR)
+```
+
+.pull-left[
+### Colors, ggplot theme
+
+.center[&lt;IMG SRC="libs/map.png" height = "350" width = auto&gt;]
+&lt;!-- ### Excel Formatting  --&gt;
+&lt;!-- .center[&lt;IMG SRC="libs/statxlsx.png" width = "300" height = auto&gt;] --&gt;
+]
+
+.pull-right[
+
+### RMarkdown template
+
+
+.center[&lt;IMG SRC="libs/report_cover.png" height = "350" width = auto&gt;]
+]
+
+
+
 ---
 
 
 class: top, left
 
 # Tools
-<i class="fas  fa-wrench fa-3x fa-pull-right "></i>
-## Data base workflow
 
-- input data is in our db, NOT in csv
-- read &amp; write from/to OracleDB
-- Package: ROralce
-- future: dbplyr?
-  
----
+&lt;!-- <i class="fas  fa-step-forward fa-3x fa-pull-right "></i> --&gt;
 
+## Next steps
 
-
-class: top, left
-
-# Tools
-<i class="fas  fa-wrench fa-3x fa-pull-right "></i>
-## Reproducability
-
-### Infrastructure
-- RStudio Server
-- Git/Github
-
-### Dependency management: 
-- docker is too much overhead
-- packarat vs. checkpoint
-- is drake an option?
-
+&lt;br&gt;
 ### R
+<i class="fab  fa-r fa-2x fa-pull-right "></i>
 - RProjects
 - RPackages
 
 
----
-
-class: top, left
-
-# Culture
-<i class="fas  fa-users fa-3x fa-pull-right "></i>
-## R Programming
-
-- more:
-  - reusable code snippets
-  - functions
-  - Code review
-  - Code style guide
-  
-- less:
-  - copy &amp; paste
-  - 1000 line long R scripts
-
----
+### Dependencies
+<i class="fas  fa-sitemap fa-2x fa-pull-right "></i>
+- docker is too heavy
+- packrat vs. checkpoint
+- is drake an option?
 
 
-class: top, left
+### Infrastructure
+<i class="fas  fa-server fa-2x fa-pull-right "></i>
+- RStudio Server
+- Git/Github
 
-# Culture
-<i class="fas  fa-users fa-3x fa-pull-right "></i>
-## Community: internal
-
-- internal RMeetups (~6 weeks)
-- show &amp; tell
-- ask &amp; learn
 
 ---
 
 class: top, left
 
+# Tools
+<i class="fas  fa-times fa-3x fa-pull-right "></i>
+## Resistance
+
+
+&lt;br&gt;
+
+
+
+.center[&lt;IMG SRC="libs/wheel.png" height = "400" width = auto&gt;]
+
+
+
+
+---
+
+class: inverse, middle
+# 
+
+&lt;font color="white" size = "66"&gt; &lt;b&gt; It's the Culture, Stupid!  &lt;/b&gt;&lt;/font&gt; 
+
+<i class="fas  fa-users fa-5x fa-pull-right "></i>
+
+---
+
+class: top, left
+
+# Culture
+<i class="fas  fa-bullhorn fa-3x fa-pull-right "></i>
+## Show &amp; Tell
+
+&lt;br&gt;
+
+### In person: Internal Meetups
+- Solve problems
+- New R Packages
+- Ideas &amp; inspiration
+
+&lt;br&gt;
+
+### Virtual: Forum
+- How To
+- Code snippets
+- Q &amp; A
+
+---
+
+
+
+
+class: top, left
+
 # Culture
 <i class="fas  fa-users fa-3x fa-pull-right "></i>
-## Community: Zurich R User Group
-### «The use of R in public administration»
 
+## Community
+
+
+
+&lt;font color=#009ee0 size = "20"&gt;  «The use of R in public administration» &lt;/font&gt; 
 
 .pull-left[&lt;IMG SRC=libs/RMeetup_agenda.PNG width = "420" height = auto&gt;]
 .pull-right[&lt;IMG SRC=libs/20171107_190044.jpg width = "420" height = auto&gt;
@@ -226,51 +319,59 @@ class: top, left
 
 
 
-
 ---
-
-
 class: top, left
 
 # Culture
-<i class="fas  fa-users fa-3x fa-pull-right "></i>
-## Community
+## Skills
 
-### open source data pipes
 
-&lt;blockquote class="twitter-tweet" data-lang="de"&gt;&lt;p lang="en" dir="ltr"&gt;Thanks &lt;a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw"&gt;@statistik_zh&lt;/a&gt; &lt;a href="https://twitter.com/schnllr?ref_src=twsrc%5Etfw"&gt;@schnllr&lt;/a&gt; for the warm welcome and nice platform to present &lt;a href="https://twitter.com/KOFETH?ref_src=twsrc%5Etfw"&gt;@KOFETH&lt;/a&gt; &amp;#39;s open source driven data pipes. Go &lt;a href="https://twitter.com/hashtag/swiss?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#swiss&lt;/a&gt; &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt;! &lt;a href="https://t.co/OmX2WCjr6o"&gt;pic.twitter.com/OmX2WCjr6o&lt;/a&gt;&lt;/p&gt;&amp;mdash; Matt Bannert (@whatsgoodio) &lt;a href="https://twitter.com/whatsgoodio/status/951470783322316800?ref_src=twsrc%5Etfw"&gt;11. Januar 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+&lt;br&gt;
+.center[<i class="fas  fa-user-ninja fa-5x "></i>]
 
-### git for researchers
 
-&lt;blockquote class="twitter-tweet" data-lang="de"&gt;&lt;p lang="en" dir="ltr"&gt;&lt;a href="https://twitter.com/hashtag/Git?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#Git&lt;/a&gt;, &lt;a href="https://twitter.com/hashtag/Github?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#Github&lt;/a&gt;, &lt;a href="https://twitter.com/hashtag/Gitlab?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#Gitlab&lt;/a&gt; and &lt;a href="https://twitter.com/hashtag/bitbucket?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#bitbucket&lt;/a&gt; in Academic Research and Official Statistics. Here are the slides of my workshop &lt;a href="https://twitter.com/KOFETH?ref_src=twsrc%5Etfw"&gt;@KOFETH&lt;/a&gt;: &lt;a href="https://t.co/1v47gW1pUa"&gt;https://t.co/1v47gW1pUa&lt;/a&gt; . Thanks &lt;a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw"&gt;@statistik_zh&lt;/a&gt; and everyone else for your time and great participation! &lt;a href="https://twitter.com/hashtag/swissdata?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#swissdata&lt;/a&gt;&lt;/p&gt;&amp;mdash; Matt Bannert (@whatsgoodio) &lt;a href="https://twitter.com/whatsgoodio/status/978589018278514688?ref_src=twsrc%5Etfw"&gt;27. März 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+&lt;br&gt;
+
+.pull-left[
+<i class="fas  fa-plus fa-3x fa-pull-left "></i>
+  - functions
+  - Code review
+  - Code style guide]
+.pull-right[
+<i class="fas  fa-minus fa-3x fa-pull-left "></i>
+  - copy &amp; paste
+  - loooooong R scripts
+  - tool frictions]
+---
+
+
+class: inverse, center
+
+
+<i class="fas  fa-road fa-5x "></i>
+
+&lt;br&gt;
+
+.center[
+&lt;!-- &lt;i class="fas fa-road", size = 9&gt;&lt;/i&gt; --&gt;
+
+&lt;!-- &lt;br&gt; --&gt;
+
+&lt;font color=white size = "20"&gt; &lt;b&gt;  Reproducibility &lt;/b&gt; &lt;/font&gt; 
+
+&lt;br&gt;
+
+&lt;font color=white size = "20"&gt; &lt;b&gt;  Cooperation &lt;/b&gt; &lt;/font&gt; 
+
+
+&lt;br&gt;
+
+&lt;font color=white size = "20"&gt; &lt;b&gt;  Pace setting &lt;/b&gt; &lt;/font&gt; ]
+
 
 
 
 ---
-
-
-class: top, left
-
-# Road ahead
-<i class="fas  fa-road fa-3x fa-pull-right "></i>
-
-## Tools
-- packrat or equivalent
-- git
-- Rs
-
-## Culture
-- cooperation
-- style guide
-
-
-
-
----
-
-
 
 
 background-image: url("libs/sticker-01.png")
@@ -279,26 +380,29 @@ background-size:30%
 
 class: top, left
 
+<i class="fas  fa-comments fa-5x fa-pull-right "></i>
 
-
-&lt;font color=#009ee0 size = "30"&gt; &lt;b&gt; Thanks!&lt;/b&gt;&lt;/font&gt; 
+&lt;font color=#009ee0 size = "48"&gt; &lt;b&gt; Your experiences? 
+&lt;br&gt;
+&lt;br&gt; Thanks! &lt;/b&gt;&lt;/font&gt; 
 
 &lt;br&gt;
+&lt;br&gt;
 
-
-Andrea Schnell  
+Andrea Schnell   
 [andrea.schnell@statistik.ji.zh.ch](mailto:andrea.schnell@statistik.ji.zh.ch)  
 
-<i class="fab  fa-twitter "></i> &lt;a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false"&gt;@schnllr&lt;/a&gt;&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+<i class="fab  fa-twitter fa-2x "></i> &lt;a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false"&gt;@schnllr&lt;/a&gt;&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
 
-<i class="fab  fa-github "></i> https://schnllr.github.io/eRum  
+<i class="fab  fa-github fa-2x "></i> https://schnllr.github.io/eRum  
 
-&lt;br&gt;
-Statistical Office Canton of Zurich  
+&lt;!-- &lt;br&gt; --&gt;
+&lt;!-- Statistical Office Canton of Zurich   --&gt;
 
-<i class="fab  fa-twitter "></i> &lt;a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false"&gt;@statistik_zh&lt;/a&gt;&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+&lt;!-- <i class="fab  fa-twitter "></i> &lt;a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false"&gt;@statistik_zh&lt;/a&gt;&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt; --&gt;
 
-&lt;br&gt;
+
+
 &lt;br&gt;
 &lt;small&gt;Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).&lt;/small&gt;
 

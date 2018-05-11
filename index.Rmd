@@ -1,7 +1,6 @@
 ---
-title:  "<br> Analytical Pipelines- <br>Tools and Culture"
-subtitle: "eRum 2018"
-author: "Andrea Schnell <br>Statistical Office Canton of Zurich"
+title:  "<br> Analytical Pipelines - <br>Tools and Culture"
+author: "Andrea Schnell <br>eRum 2018"
 output:
   xaringan::moon_reader:
     css: libs/testzh.css
@@ -11,6 +10,8 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       self_contained: false
+
+
       
 ---
 
@@ -18,7 +19,7 @@ output:
 
 ```{r setup, include=FALSE}
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
-knitr::opts_chunk$set(echo = TRUE, eval = TRUE)
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE,warning = F, message = F)
 ```
 
 ```{r, echo = F, eval = F}
@@ -34,13 +35,13 @@ library(icon)
 
 class:  left, top
 # Environment
-`r icon::fa_building(size = 3, pull= "right")`
+<!-- `r icon::fa_building(size = 3, pull= "right")` -->
 
 
 ```{r, echo = F}
-office <- c("Statistical Office", "Official Statistics", "Public Administration")
-it <- c("closed up IT infrastructure", "no admin rights", "very rigid firewall")
-staff <- c("social scientists", "Excel natives","R training «on-the-job»")
+office <- c("Official Statistics", "Public Administration")
+it <- c("closed up IT infrastructure", "very rigid firewall")
+staff <- c("Excel natives","R training «on-the-job»")
 
 
 ```
@@ -49,9 +50,11 @@ staff <- c("social scientists", "Excel natives","R training «on-the-job»")
 ls()
 ```
 
-```{r, echo = F, eval = T}
+```{r, echo = F, eval = F}
 noquote(ls())
 ```
+
+<br>
 
 ## Office
 ```{r, echo = F, size = 15, eval = T}
@@ -75,6 +78,50 @@ noquote(staff)
 ---
 
 
+class: top, left
+
+# Workflow
+<!-- `r icon::fa_cogs(size = 3, pull = "right")` -->
+
+
+
+
+<!-- <IMG SRC="libs/ausgangslage.png" width = auto height = auto> -->
+
+
+<!-- <br> -->
+
+<!-- <IMG SRC="libs/ziel.png" width = auto height = auto> -->
+
+<!-- <br> -->
+<!-- .right[[Source: https://dataingovernment.blog.gov.uk](https://dataingovernment.blog.gov.uk/2017/03/27/reproducible-analytical-pipeline/)] -->
+
+
+.pull-left[
+### Today
+- Data store  
+`r icon::fa_table(size = 2)` `r icon::fa_file_excel(size = 2)` `r icon::fa_database(size = 2)`
+
+- Statistical Analysis  
+`r icon::fa_file_excel(size = 2)`  `r icon::fa_r(size = 2)` 
+
+- Visualizations  
+`r icon::fa_chart_bar(size = 2)` `r icon::fa_chart_pie(size = 2)` `r icon::fa_chart_line(size = 2)`
+
+- Text  
+`r icon::fa_file_word(size = 2)`  
+
+- Publication  
+`r icon::fa_file_pdf(size = 2)`
+]
+
+.pull-right[
+### Tomorrow: Pipeline
+<IMG SRC=libs/rmarkdown_wf.PNG width = "150" height = auto>]
+
+---
+
+
 class:  left, top
 # Mission
 <!-- `r icon::fa_trophy(size = 3, pull= "right")` -->
@@ -82,7 +129,7 @@ class:  left, top
 
 <br>
 
-<font size = "20"> <b> GOV.UK Data in Government </b></font> 
+### GOV.UK Data in Government
 
 [**Transforming the process of producing official statistics**](https://dataingovernment.blog.gov.uk/2017/11/27/transforming-the-process-of-producing-official-statistics/)
 
@@ -100,22 +147,6 @@ class:  left, top
 
 class: top, left
 
-# Where did we start?
-`r icon::fa_cogs(size = 3, pull = "right")`
-
-
-### Workflow
-
-<IMG SRC="libs/ausgangslage.png" width = auto height = auto>
-
-
-<br>
-
-.right[[**Source: UK.GOV RAP**](https://dataingovernment.blog.gov.uk/2017/03/27/reproducible-analytical-pipeline/)]
-
----
-class: top, left
-
 # How to get there?
 `r icon::fa_location_arrow(size = 3, pull = "right")`
 
@@ -131,100 +162,209 @@ class: top, left
 `r icon::fa_people_carry(size = 5)`
 
 
+
+
+
 ---
-
-
-
 
 class: top, left
 
 # Tools
-`r icon::fa_wrench(size = 3, pull = "right")`
+`r icon::fa_database(size = 3, pull = "right")`
+## Data storage
+
+<br>
+### Data base
+```{r, eval = F, echo = T}
+library(ROracle)
+dbReadTable()
+dbWriteTable()
+```
+
+```{r, eval = F, echo = F}
+library(dbplyr)
+```
+
+.pull-left[
+`r icon::fa_plus(size = 3, pull = "left")`
+- traceable
+- secure
+- less redundancy
+]
+
+.pull-right[
+`r icon::fa_minus(size = 3, pull = "left")`
+- how to
+- error handling (encoding, time zone)
+]
+
+---
+
+class: top, left
+
+# Tools
 ## Corporate Design Toolbox
+```{r, echo = T, eval = F}
+library(statR)
+```
 
-- color palettes
-- ggplot themes
-- export formatted excel tables (with openxlsx)
-- layouted pdf reports (via Rmarkdown & LaTeX)
-  
+.pull-left[
+### Colors, ggplot theme
+```{r, echo = F, warning = F, message = F, fig.height=3.5, fig.width=4.5, eval = F}
+ls("package:statR")
+library(ggplot2)
+# library(gridExtra)
+library(statR)
+
+source("L:/STAT/03_AS/01_Werkzeuge/01_Toolbox/R/Funktionen/theme_stat2.r")
+
+# display(zhpal$zhdiagonal)
+
+ggplot(mpg, aes(class))+
+  geom_bar(aes(fill = drv))+
+  theme_stat2()+
+  scale_fill_manual(values = zhpal$zhpaired)+
+  theme(plot.margin = unit(c(0, 0, 0, 0), "mm"))
+
+```
+.center[<IMG SRC="libs/map.png" height = "350" width = auto>]
+<!-- ### Excel Formatting  -->
+<!-- .center[<IMG SRC="libs/statxlsx.png" width = "300" height = auto>] -->
+]
+
+.pull-right[
+
+### RMarkdown template
+
+```{r, fig.height=3, echo = F, eval = F}
+ggplot(mpg, aes(class))+
+  geom_bar(aes(fill = drv))+
+  theme_stat2()+
+  scale_fill_manual(values = zhpal$zhpaired)+
+  labs(title = " color palette & ggplot theme", fontfamily = "Arial Black")
+```
+.center[<IMG SRC="libs/report_cover.png" height = "350" width = auto>]
+]
+
+
+
 ---
 
 
 class: top, left
 
 # Tools
-`r icon::fa_wrench(size = 3, pull = "right")`
-## Data base workflow
 
-- input data is in our db, NOT in csv
-- read & write from/to OracleDB
-- Package: ROralce
-- future: dbplyr?
-  
----
+<!-- `r icon::fa_step_forward(size = 3, pull = "right")` -->
 
+## Next steps
 
-
-class: top, left
-
-# Tools
-`r icon::fa_wrench(size = 3, pull = "right")`
-## Reproducability
-
-### Infrastructure
-- RStudio Server
-- Git/Github
-
-### Dependency management: 
-- docker is too much overhead
-- packarat vs. checkpoint
-- is drake an option?
-
+<br>
 ### R
+`r icon::fa_r(size = 2, pull = "right")`
 - RProjects
 - RPackages
 
 
----
-
-class: top, left
-
-# Culture
-`r icon::fa_users(size = 3, pull = "right")`
-## R Programming
-
-- more:
-  - reusable code snippets
-  - functions
-  - Code review
-  - Code style guide
-  
-- less:
-  - copy & paste
-  - 1000 line long R scripts
-
----
+### Dependencies
+`r icon::fa_sitemap(size = 2, pull = "right")`
+- docker is too heavy
+- packrat vs. checkpoint
+- is drake an option?
 
 
-class: top, left
+### Infrastructure
+`r icon::fa_server(size = 2, pull = "right")`
+- RStudio Server
+- Git/Github
 
-# Culture
-`r icon::fa_users(size = 3, pull = "right")`
-## Community: internal
-
-- internal RMeetups (~6 weeks)
-- show & tell
-- ask & learn
 
 ---
 
 class: top, left
 
+# Tools
+`r icon::fa_times(size = 3, pull = "right")`
+## Resistance
+
+
+<br>
+
+```{r, echo = F, warning = F, eval = T, fig.height=2, fig.width=8, eval = F}
+library(tidyverse)
+source("L:/STAT/03_AS/01_Werkzeuge/01_Toolbox/R/Funktionen/theme_stat.r")
+user <- data.frame(variable = c("enthusiasts", "traditionalists"), value = c(25, 75) )
+
+ggplot(user, aes(x = 1,y = value))+
+  geom_bar(aes(fill = rev(variable)), position = "fill", stat = "sum", color= "black")+
+  geom_text(aes(label = paste0(variable, "  ")), 
+            color = "white", position = position_fill(), hjust = 1, vjust = -1, fontface= "bold", size = 7)+
+    geom_text(aes(label = paste0(paste0(value, "%"), "  ")), 
+            color = "white", position = position_fill(), vjust = 1, hjust = 1, fontface= "bold", size = 7)+
+  theme_stat()+
+  scale_fill_manual(values = c(zhpal$zhblue[4], zhpal$zhblue[1]))+
+  theme(panel.grid = element_blank(),
+        axis.text.y = element_blank(),
+        legend.position = "none",
+        plot.title = element_text(size = 20, face = "bold", hjust = 0.5),
+        axis.text.x = element_blank(), axis.line.x = element_blank(),
+        axis.ticks.x = element_blank())+
+  coord_flip()+
+    labs(x = NULL, y = NULL,  fill = NULL, color = NULL, title = "R User")+
+  guides(color = NULL, fill = NULL)
+```
+
+.center[<IMG SRC="libs/wheel.png" height = "400" width = auto>]
+
+
+
+
+---
+
+class: inverse, middle
+# 
+
+<font color="white" size = "66"> <b> It's the Culture, Stupid!  </b></font> 
+
+`r icon::fa_users(size = 5, pull = "right")`
+
+---
+
+class: top, left
+
+# Culture
+`r icon::fa_bullhorn(size = 3, pull = "right")`
+## Show & Tell
+
+<br>
+
+### In person: Internal Meetups
+- Solve problems
+- New R Packages
+- Ideas & inspiration
+
+<br>
+
+### Virtual: Forum
+- How To
+- Code snippets
+- Q & A
+
+---
+
+
+
+
+class: top, left
+
 # Culture
 `r icon::fa_users(size = 3, pull = "right")`
-## Community: Zurich R User Group
-### «The use of R in public administration»
 
+## Community
+
+
+
+<font color=#009ee0 size = "20">  «The use of R in public administration» </font> 
 
 .pull-left[<IMG SRC=libs/RMeetup_agenda.PNG width = "420" height = auto>]
 .pull-right[<IMG SRC=libs/20171107_190044.jpg width = "420" height = auto>
@@ -235,51 +375,59 @@ class: top, left
 
 
 
-
 ---
-
-
 class: top, left
 
 # Culture
-`r icon::fa_users(size = 3, pull = "right")`
-## Community
+## Skills
 
-### open source data pipes
 
-<blockquote class="twitter-tweet" data-lang="de"><p lang="en" dir="ltr">Thanks <a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw">@statistik_zh</a> <a href="https://twitter.com/schnllr?ref_src=twsrc%5Etfw">@schnllr</a> for the warm welcome and nice platform to present <a href="https://twitter.com/KOFETH?ref_src=twsrc%5Etfw">@KOFETH</a> &#39;s open source driven data pipes. Go <a href="https://twitter.com/hashtag/swiss?src=hash&amp;ref_src=twsrc%5Etfw">#swiss</a> <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a>! <a href="https://t.co/OmX2WCjr6o">pic.twitter.com/OmX2WCjr6o</a></p>&mdash; Matt Bannert (@whatsgoodio) <a href="https://twitter.com/whatsgoodio/status/951470783322316800?ref_src=twsrc%5Etfw">11. Januar 2018</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<br>
+.center[`r icon::fa_user_ninja(size = 5 )`]
 
-### git for researchers
 
-<blockquote class="twitter-tweet" data-lang="de"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/Git?src=hash&amp;ref_src=twsrc%5Etfw">#Git</a>, <a href="https://twitter.com/hashtag/Github?src=hash&amp;ref_src=twsrc%5Etfw">#Github</a>, <a href="https://twitter.com/hashtag/Gitlab?src=hash&amp;ref_src=twsrc%5Etfw">#Gitlab</a> and <a href="https://twitter.com/hashtag/bitbucket?src=hash&amp;ref_src=twsrc%5Etfw">#bitbucket</a> in Academic Research and Official Statistics. Here are the slides of my workshop <a href="https://twitter.com/KOFETH?ref_src=twsrc%5Etfw">@KOFETH</a>: <a href="https://t.co/1v47gW1pUa">https://t.co/1v47gW1pUa</a> . Thanks <a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw">@statistik_zh</a> and everyone else for your time and great participation! <a href="https://twitter.com/hashtag/swissdata?src=hash&amp;ref_src=twsrc%5Etfw">#swissdata</a></p>&mdash; Matt Bannert (@whatsgoodio) <a href="https://twitter.com/whatsgoodio/status/978589018278514688?ref_src=twsrc%5Etfw">27. März 2018</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<br>
+
+.pull-left[
+`r icon::fa_plus(size = 3, pull = "left")`
+  - functions
+  - Code review
+  - Code style guide]
+.pull-right[
+`r icon::fa_minus(size = 3, pull = "left")`
+  - copy & paste
+  - loooooong R scripts
+  - tool frictions]
+---
+
+
+class: inverse, center
+
+
+`r icon::fa_road(size = 5)`
+
+<br>
+
+.center[
+<!-- <i class="fas fa-road", size = 9></i> -->
+
+<!-- <br> -->
+
+<font color=white size = "20"> <b>  Reproducibility </b> </font> 
+
+<br>
+
+<font color=white size = "20"> <b>  Cooperation </b> </font> 
+
+
+<br>
+
+<font color=white size = "20"> <b>  Pace setting </b> </font> ]
+
 
 
 
 ---
-
-
-class: top, left
-
-# Road ahead
-`r icon::fa_road(size = 3, pull = "right")`
-
-## Tools
-- packrat or equivalent
-- git
-- Rs
-
-## Culture
-- cooperation
-- style guide
-
-
-
-
----
-
-
 
 
 background-image: url("libs/sticker-01.png")
@@ -288,26 +436,29 @@ background-size:30%
 
 class: top, left
 
+`r icon::fa_comments(size = 5, pull = "right")`
 
-
-<font color=#009ee0 size = "30"> <b> Thanks!</b></font> 
+<font color=#009ee0 size = "48"> <b> Your experiences? 
+<br>
+<br> Thanks! </b></font> 
 
 <br>
+<br>
 
-
-Andrea Schnell  
+Andrea Schnell   
 [andrea.schnell@statistik.ji.zh.ch](mailto:andrea.schnell@statistik.ji.zh.ch)  
 
-`r icon::fa_twitter(size = 1)` <a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">@schnllr</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+`r icon::fa_twitter(size = 2)` <a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">@schnllr</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-`r icon::fa_github(size = 1)` https://schnllr.github.io/eRum  
+`r icon::fa_github(size = 2)` https://schnllr.github.io/eRum  
 
-<br>
-Statistical Office Canton of Zurich  
+<!-- <br> -->
+<!-- Statistical Office Canton of Zurich   -->
 
-`r icon::fa_twitter(size = 1)` <a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">@statistik_zh</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!-- `r icon::fa_twitter(size = 1)` <a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">@statistik_zh</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 
-<br>
+
+
 <br>
 <small>Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).</small>
 
