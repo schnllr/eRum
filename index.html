@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>  Analytical Pipelines-  Tools and Culture</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Andrea Schnell  Statistical Office Canton of Zurich" />
+    <link href="libs/font-awesome-5.0.11/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="libs\testzh.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# <br> Analytical Pipelines- <br>Tools and Culture
+## eRum 2018
+### Andrea Schnell <br>Statistical Office Canton of Zurich
+
+---
+
+
+
+
+
+
+
+
+
+
+
+class:  left, top
+# Environment
+<i class="fas  fa-building fa-3x fa-pull-right "></i>
+
+
+
+
+
+```r
+ls()
+```
+
+
+```
+## [1] it     office staff
+```
+
+## Office
+
+```
+## [1] Statistical Office    Official Statistics   Public Administration
+```
+
+## IT
+
+```
+## [1] closed up IT infrastructure no admin rights            
+## [3] very rigid firewall
+```
+
+
+## Users
+
+```
+## [1] social scientists       Excel natives           R training «on-the-job»
+```
+
+
+
+---
+
+
+class:  left, top
+# Mission
+&lt;!-- <i class="fas  fa-trophy fa-3x fa-pull-right "></i> --&gt;
+## Reproducible Analytical Pipelines
+
+&lt;br&gt;
+
+&lt;font size = "20"&gt; &lt;b&gt; GOV.UK Data in Government &lt;/b&gt;&lt;/font&gt; 
+
+[**Transforming the process of producing official statistics**](https://dataingovernment.blog.gov.uk/2017/11/27/transforming-the-process-of-producing-official-statistics/)
+
+[**Reproducible Analytical Pipelines**](https://dataingovernment.blog.gov.uk/2017/03/27/reproducible-analytical-pipeline/)
+
+[**RAP Companion**](https://ukgovdatascience.github.io/rap_companion/)
+
+
+
+
+.right[&lt;IMG SRC="libs/rap_hex.png" width = auto height = "200"&gt;]
+
+
+---
+
+class: top, left
+
+# Where did we start?
+<i class="fas  fa-cogs fa-3x fa-pull-right "></i>
+
+
+### Workflow
+
+&lt;IMG SRC="libs/ausgangslage.png" width = auto height = auto&gt;
+
+.right[[**UK.GOV RAP**](https://dataingovernment.blog.gov.uk/2017/03/27/reproducible-analytical-pipeline/)]
+
+---
+class: top, left
+
+# How to get there?
+<i class="fas  fa-location-arrow fa-3x fa-pull-right "></i>
+
+&lt;br&gt;
+## Tools
+
+<i class="fas  fa-wrench fa-5x "></i>
+
+&lt;br&gt;
+
+## Culture
+
+<i class="fas  fa-people-carry fa-5x "></i>
+
+
+---
+
+
+
+
+class: top, left
+
+# Tools
+<i class="fas  fa-wrench fa-3x fa-pull-right "></i>
+## Corporate Design Toolbox
+
+- color palettes
+- ggplot themes
+- export formatted excel tables (with openxlsx)
+- layouted pdf reports (via Rmarkdown &amp; LaTeX)
+  
+---
+
+
+class: top, left
+
+# Tools
+<i class="fas  fa-wrench fa-3x fa-pull-right "></i>
+## Data base workflow
+
+- input data is in our db, NOT in csv
+- read &amp; write from/to OracleDB
+- Package: ROralce
+- future: dbplyr?
+  
+---
+
+
+
+class: top, left
+
+# Tools
+<i class="fas  fa-wrench fa-3x fa-pull-right "></i>
+## Reproducability
+
+### Infrastructure
+- RStudio Server
+- Git/Github
+
+### Dependency management: 
+- docker is too much overhead
+- packarat vs. checkpoint
+- is drake an option?
+
+### R
+- RProjects
+- RPackages
+
+
+---
+
+class: top, left
+
+# Culture
+<i class="fas  fa-users fa-3x fa-pull-right "></i>
+## R Programming
+
+- more:
+  - reusable code snippets
+  - functions
+  - Code review
+  - Code style guide
+  
+- less:
+  - copy &amp; paste
+  - 1000 line long R scripts
+
+---
+
+
+class: top, left
+
+# Culture
+<i class="fas  fa-users fa-3x fa-pull-right "></i>
+## Community: internal
+
+- internal RMeetups (~6 weeks)
+- show &amp; tell
+- ask &amp; learn
+
+---
+
+class: top, left
+
+# Culture
+<i class="fas  fa-users fa-3x fa-pull-right "></i>
+## Community: Zurich R User Group
+### «The use of R in public administration»
+
+
+.pull-left[&lt;IMG SRC=libs/RMeetup_agenda.PNG width = "420" height = auto&gt;]
+.pull-right[&lt;IMG SRC=libs/20171107_190044.jpg width = "420" height = auto&gt;
+&lt;br&gt;
+.right[https://statistikzh.github.io/RMeetup]]  
+
+
+
+
+
+
+---
+
+
+class: top, left
+
+# Culture
+<i class="fas  fa-users fa-3x fa-pull-right "></i>
+## Community
+
+### open source data pipes
+
+&lt;blockquote class="twitter-tweet" data-lang="de"&gt;&lt;p lang="en" dir="ltr"&gt;Thanks &lt;a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw"&gt;@statistik_zh&lt;/a&gt; &lt;a href="https://twitter.com/schnllr?ref_src=twsrc%5Etfw"&gt;@schnllr&lt;/a&gt; for the warm welcome and nice platform to present &lt;a href="https://twitter.com/KOFETH?ref_src=twsrc%5Etfw"&gt;@KOFETH&lt;/a&gt; &amp;#39;s open source driven data pipes. Go &lt;a href="https://twitter.com/hashtag/swiss?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#swiss&lt;/a&gt; &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt;! &lt;a href="https://t.co/OmX2WCjr6o"&gt;pic.twitter.com/OmX2WCjr6o&lt;/a&gt;&lt;/p&gt;&amp;mdash; Matt Bannert (@whatsgoodio) &lt;a href="https://twitter.com/whatsgoodio/status/951470783322316800?ref_src=twsrc%5Etfw"&gt;11. Januar 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+### git for researchers
+
+&lt;blockquote class="twitter-tweet" data-lang="de"&gt;&lt;p lang="en" dir="ltr"&gt;&lt;a href="https://twitter.com/hashtag/Git?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#Git&lt;/a&gt;, &lt;a href="https://twitter.com/hashtag/Github?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#Github&lt;/a&gt;, &lt;a href="https://twitter.com/hashtag/Gitlab?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#Gitlab&lt;/a&gt; and &lt;a href="https://twitter.com/hashtag/bitbucket?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#bitbucket&lt;/a&gt; in Academic Research and Official Statistics. Here are the slides of my workshop &lt;a href="https://twitter.com/KOFETH?ref_src=twsrc%5Etfw"&gt;@KOFETH&lt;/a&gt;: &lt;a href="https://t.co/1v47gW1pUa"&gt;https://t.co/1v47gW1pUa&lt;/a&gt; . Thanks &lt;a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw"&gt;@statistik_zh&lt;/a&gt; and everyone else for your time and great participation! &lt;a href="https://twitter.com/hashtag/swissdata?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#swissdata&lt;/a&gt;&lt;/p&gt;&amp;mdash; Matt Bannert (@whatsgoodio) &lt;a href="https://twitter.com/whatsgoodio/status/978589018278514688?ref_src=twsrc%5Etfw"&gt;27. März 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+
+
+---
+
+
+class: top, left
+
+# Road ahead
+<i class="fas  fa-road fa-3x fa-pull-right "></i>
+
+## Tools
+- packrat or equivalent
+- git
+- Rs
+
+## Culture
+- cooperation
+- style guide
+
+
+
+
+---
+
+
+
+
+background-image: url("libs/sticker-01.png")
+background-position: bottom right
+background-size:30%
+
+class: top, left
+
+
+
+&lt;font color=#009ee0 size = "30"&gt; &lt;b&gt; Thanks!&lt;/b&gt;&lt;/font&gt; 
+
+&lt;br&gt;
+
+
+Andrea Schnell  
+[andrea.schnell@statistik.ji.zh.ch](mailto:andrea.schnell@statistik.ji.zh.ch)  
+
+<i class="fab  fa-twitter "></i> &lt;a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false"&gt;@schnllr&lt;/a&gt;&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+<i class="fab  fa-github "></i> https://schnllr.github.io/eRum  
+
+&lt;br&gt;
+Statistical Office Canton of Zurich  
+
+<i class="fab  fa-twitter "></i> &lt;a href="https://twitter.com/statistik_zh?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false"&gt;@statistik_zh&lt;/a&gt;&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;small&gt;Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).&lt;/small&gt;
+
+
+&lt;!-- .right[&lt;IMG SRC="libs/sticker-01.png" width = auto height = "150"&gt;] --&gt;
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"self_contained": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
